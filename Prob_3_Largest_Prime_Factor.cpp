@@ -5,19 +5,16 @@
 using namespace std;
 
 bool isPrime(int num){
-//	cout << num << endl;
 	if(num < 2)
 	{
 		return false;
 	}
 	if(num == 2)
 	{
-//		cout << "num = 2" << endl;
 		return true;
 	}
 	if(num % 2 == 0)
 	{
-//		cout << "divisible by 2" << endl;
 		return false;
 	}
 
@@ -26,7 +23,6 @@ bool isPrime(int num){
 	{
 		if(num%x == 0)
 		{
-//			cout << x << " is a factor of " << num << endl;
 			return false;
 		}
 	}
