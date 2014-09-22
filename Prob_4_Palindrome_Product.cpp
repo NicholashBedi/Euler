@@ -4,14 +4,21 @@
 #include<vector>
 using namespace std;
 
-//bool ispan(int num)
-//{
-//	
-//}
+bool ispan(string a)
+{
+	int len = a.length();
+	for(int i = 0; i < len/2; i++)
+	{
+		if ( a[i] == a[len-1-i])
+		return true;
+	}
+	return false;
+}
+
 
 int main()
 {
-	string a = "12345";
-	cout << a.length() << endl;
+	cout << ispan("racecar") <<endl;
+
 	return EXIT_SUCCESS;
 }
