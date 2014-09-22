@@ -11,10 +11,10 @@ bool ispan(string a)
 	int len = a.length();
 	for(int i = 0; i < len/2; i++)
 	{
-		if ( a[i] == a[len-1-i])
-		return true;
+		if ( a[i] != a[len-1-i])
+		return false;
 	}
-	return false;
+	return true;
 }
 
 string tostring(int f)
@@ -30,9 +30,9 @@ string tostring(int f)
 int main()
 {
 	int max = 0;
-	for (int i = 1; i < 100; i++)
+	for (int i = 1; i < 1000; i++)
 	{
-		for (int j = 1; j < 100; j++)
+		for (int j = 1; j < 1000; j++)
 		{
 			
 			if (ispan(tostring(i*j)) == true)
