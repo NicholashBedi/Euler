@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	string a = "1234";
-	cout << a[1] << endl;
+	string a = "12345";
+	cout << a.length() << endl;
 	return EXIT_SUCCESS;
 }
