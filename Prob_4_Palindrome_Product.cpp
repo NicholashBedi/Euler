@@ -2,23 +2,6 @@
 #include<iostream>
 #include<cstdlib>
 #include<vector>
-<<<<<<< HEAD
-using namespace std;
-
-//bool ispan(int num)
-//{
-//	
-//}
-
-int main()
-{
-	string a = "1234";
-	cout << a[1] << endl;
-	return EXIT_SUCCESS;
-}
-
-=======
-#include<string>
 #include<sstream>
 using namespace std;
 
@@ -63,4 +46,13 @@ int main()
 	cout << max << endl;
 	return EXIT_SUCCESS;
 }
->>>>>>> Problem4
+
+/*
+
+906609
+
+--------------------------------
+Process exited after 0.9928 seconds with return value 0
+Press any key to continue . . .
+
+*/
