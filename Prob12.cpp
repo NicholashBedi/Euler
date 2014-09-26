@@ -14,26 +14,41 @@ int main()
 	int trinum = 1;
 	int counter = 2;
 	int numdiv;
-	while(trinum < 30)
+	while(numdiv < 500)
 	{
 		numdiv = 0;
 		
 		trinum += counter;
-		for (int div = 1; div < sqrt(trinum) + 1; div++)
+		for (double div = 1.0; div < sqrt(trinum) + 1.0; div++)
 		{
-			if(trinum%div == 0)
+			if(trinum/div == int(trinum/div))
 			{
 				if(sqrt(trinum) == div)
+				{
 					numdiv += 1;
+					//cout << div << endl;
+				}
+					
 				else
+				{
 					numdiv += 2;
+					//cout <<"Divisors: " << div << " and " << trinum/div << endl;
+				}
 			}
 		}
 		counter += 1;
-		cout << "1: " << trinum << " has this many divisors: " << numdiv << endl;
+		//cout << trinum << " has this many divisors: " << numdiv << endl;
 	} 
 	
 	cout << trinum <<endl;
 	return EXIT_SUCCESS;
 
 }
+
+/*
+76576500
+
+--------------------------------
+Process exited after 0.7964 seconds
+*/
+
