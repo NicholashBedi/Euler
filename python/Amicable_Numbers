@@ -1,0 +1,44 @@
+#Nicholash Bedi
+#Euler Problem 21 Amicable Numbers
+import math
+import time
+s = time.clock()
+##FindFactors
+def amic(snum):
+    asum = 0
+    bsum = 0
+    factors = []
+    factorsb = []
+    for check in range(1,int(snum/2)+1):
+        if snum%check == 0:
+            factors.append(check)
+    for a in range(0,len(factors)):
+        asum += factors[a]
+    for b in range(1,int(asum/2)+1):
+        if asum%b == 0:
+            factorsb.append(b)
+    for b in range(0,len(factorsb)):
+        bsum += factorsb[b]
+    if bsum == snum and bsum != asum:
+        return True
+    else:
+        return False
+asum = 0
+for a in range(0,10000):
+    if amic(a) == True:
+#        print a
+        asum += a
+print asum
+        
+
+
+f = time.clock()
+print str(f-s)
+
+'''
+Output
+
+31626
+3.04523797215
+[Finished in 3.2s]
+'''
