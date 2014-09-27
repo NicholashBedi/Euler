@@ -3,5 +3,4 @@ Euler
 
 Euler Code
 
-I am redoing project euler codes in c++
-I have already completed over 50 problems using python.
+I have currently completed over 50 problems. 10 of which are in c++ the rest are in python
