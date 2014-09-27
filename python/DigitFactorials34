@@ -1,0 +1,36 @@
+#Nicholash Bedi
+#Digit Factorials 34
+import math
+import time
+st = time.clock()
+
+def digit_factorials(num):
+    asum = 0
+    for a in range(0,len(str(num))):
+        asum += math.factorial(int(str(num)[a]))
+    if asum == num:
+        return True
+    else:
+        return False
+
+
+
+l = []
+for num in range(3,2540160):
+    if digit_factorials(num) == True:
+        l.append(num)
+        print l
+print l
+print sum(l)
+        
+
+
+print "time takes is " + str(float(time.clock() - st))
+        
+'''
+[145]
+[145, 40585]
+[145, 40585]
+40730
+time takes is 102.113441423
+'''      

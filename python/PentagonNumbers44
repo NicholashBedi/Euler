@@ -1,0 +1,44 @@
+#Nicholash Bedi
+#Pentagon Numbers 44
+import itertools
+import math
+import time
+start_time = time.clock()
+
+
+def check_pent(n):
+    if (float(math.sqrt((24*n)+1))+1)%6 == 0:
+        return True
+    else:
+        return False
+
+flag = 0
+pent_num = []
+start_list = 1
+while flag != 1:
+    for x in range(start_list,(start_list+1000),1):
+        pent_num.append(int(0.5*x*(3*x-1)))
+    n = list(itertools.combinations(pent_num,2))
+    print "cycle " + str(start_list)
+    for length in range(0,len(n)):
+        if check_pent(math.fabs((n[length][0]-n[length][-1]))) == True:
+            if check_pent(n[length][0]+n[length][-1]) == True:
+                print
+                print n[length]
+                print "d is equal to " + str(math.fabs((n[length][0]-n[length][-1])))
+                flag = 1    
+    else:
+        start_list += 1000
+
+print "time taken in seconds is " +str(float(time.clock()-start_time))
+
+
+'''
+cycle 1
+cycle 1001
+cycle 2001
+
+(1560090, 7042750)
+d is equal to 5482660.0
+time taken in seconds is 13.6645175098
+'''

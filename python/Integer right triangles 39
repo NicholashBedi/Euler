@@ -1,0 +1,30 @@
+#Nicholash Bedi
+#Interger Right Triangles 39
+import math
+import time
+startTime = time.clock()
+def IRT(m):
+    l=[]
+    for x in range(1,m):
+        for a in range(1,m):
+            if math.sqrt((x**2)+(a**2)) == int(math.sqrt((x**2)+(a**2))):
+                l.append(math.sqrt((x**2)+(a**2))+x+a)
+    return l 
+greatest = 0
+value = 0
+l = IRT(500)
+for a in range(0,len(l)):
+    if l.count(l[a]) > greatest:
+        greatest = l.count(l[a])
+        value = l[a]
+print greatest
+print value
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+16
+840.0
+time taken 0.174030769652 seconds
+[Finished in 0.3s]
+'''

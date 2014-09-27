@@ -1,0 +1,21 @@
+#Nichlash Bedi
+#Digit Fifth Powers 33
+import math
+import time
+timeStart = time.clock()
+l = []
+for a in range(10,350000):
+    string = str(a)
+    num = 0
+    for x in range(0,len(string)):
+        num += (int(string[x])**5)
+    if num == a:
+        l.append(num)
+print sum(l)
+
+print "time taken is " + str(float(time.clock() - timeStart))
+
+'''
+443839
+time taken is 1.61804751992
+'''

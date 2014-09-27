@@ -1,0 +1,91 @@
+#Nicholash Bedi
+#Goldbach's Other Conjecture
+import itertools
+import math
+import time
+start_time = time.clock()
+
+
+def check_prime(prime):
+    if prime < 1.1:
+        return False
+    if prime != int(prime):
+        return False
+    if prime == 2:
+        return True
+    if prime%2 == 0:
+        return False
+    for divisor in range(3,int(math.sqrt(prime)+1),2):
+        if prime%divisor == 0:
+            return False
+    return True
+
+def odd_comp(n):
+    if n < 2:
+        return False
+    if check_prime(n) == True:
+        return False
+    if n%2 == 0:
+        return False
+    return True
+
+def check_twosq(n):
+    if n%2 != 0:
+        return False
+    if int(math.sqrt(n/2)) == float(math.sqrt(n/2)):
+        return True
+    else:
+        return False
+
+def check_total(n):
+    l=[]
+    if odd_comp(n) == False:
+        return False
+    for a in range(2,n):
+        if check_prime(a) == True:
+            l.append(a)
+    if l == []:
+        print "No primes??? ERROR"
+        return False
+    pl=l
+    for b in range(0,len(l)):
+        if check_twosq(n-pl[b]) == True:
+##            print
+##            print n
+##            print pl[b]
+##            print str(n-pl[b])
+            return False
+    print "conjecture false for " + str(n)
+    return True
+x=2
+while check_total(x) == False:
+    x+=1
+print x
+
+##OC =2 
+##flag = 0
+##while flag != 1:
+##    if odd_comp(OC)== False:
+##        OC+=1
+##    else:
+##        check = OC
+##        print OC
+##        while OC == check:
+##            for prime in range(0,OC-1):
+##                if check_prime(prime) == True:
+##                    if check_twosq(OC-prime) == True:
+##                        OC+=1
+##            if odd_comp(OC) == True:  
+##                print "First not work"
+##                print OC
+##                flag = 1
+##            else:
+##                OC+=1
+        
+print "time taken in seconds is " +str(float(time.clock()-start_time))
+
+'''
+conjecture false for 5777
+5777
+time taken in seconds is 6.65365781155
+'''

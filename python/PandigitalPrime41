@@ -1,0 +1,46 @@
+#Nicholash Bed
+#Pandigit Prime 41
+import math
+import time
+startTime = time.clock()
+
+def prime(prime):
+    if prime == 1:
+        return False
+    if prime == 2:
+        return True
+    if prime%2 == 0:
+        return False
+    for check in range(3,int(math.sqrt(prime))+1,2):
+        if prime%check == 0:
+            return False
+    return True
+
+def pandigital_check(p):
+    o = [1,2,3,4,5,6,7,8,9]
+    j = o[:len(p)]
+    l=sorted(p)
+    if l == j:
+        return True
+    else:
+        return False
+
+def to_list(a):
+    sp = []
+    for app in range(0,len(str(a))):
+        sp.append(int(str(a)[app]))
+    return sp
+
+def find_larg(m):
+    for x in range(m,1,-2):
+        if prime(x) == True:
+            if pandigital_check(to_list(x)) == True:
+                greatest = x
+                return greatest
+print find_larg(7654321)                                ##NOTE: All 9th and 8th degree are divisible by 9
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+7652413
+time taken 0.180772084706 seconds
+'''

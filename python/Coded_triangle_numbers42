@@ -1,0 +1,40 @@
+#Nicholash Bedi
+#Coded Triangle Numbers Problem 42
+import math
+import time
+startTime = time.clock()
+characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+numbers = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26']
+
+f = open('words.txt','r+')
+string = f.readlines()
+
+words = str(string[0]).split(",")
+
+def ren_sum(m):
+    rs=[]
+    for n in range(1,m+1):
+        rs.append(int(0.5*n*(n+1)))
+    return rs
+
+def word_score(m):
+    asum = 0
+    for a in range(0,len(words[m])):
+        for letter in range(0,len(characters)):
+            if words[m][a] == characters[letter]:
+                asum += int(numbers[letter])
+    return asum
+
+tri = ren_sum(1000)
+count = 0
+for a in range(0,len(words)):
+    if tri.count(word_score(a)) > 0:
+        count += 1
+print count
+        
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+162
+time taken 0.0997052432788 seconds
+'''

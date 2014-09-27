@@ -1,0 +1,48 @@
+#Nicholash Bedi
+#Reciprocal Cycles
+import math
+import time
+startTime = time.clock()
+
+def div(n,d):
+    ans = []
+    check = []
+    a = n-(int(n/d)*d)
+    check.append(a)
+    x=0
+    while x < 1008:
+        z = 0
+        while a <  d:
+            a = a*10
+            if z > 0:
+                ans.append(0)
+            z+=1
+        ans.append(int(a/d))
+        x+=1
+        a = a - (int(a/d)*d)
+        check.append(a)
+        if check.count(a) > 1:
+            for i in range(0,1001):
+                if check[i] == a:
+                    return(len(ans)-i)
+        if a == 0:
+            return 0
+print div(1,17)
+grt = 1
+dmax = 0
+for d in range(2,1001):
+    if int(div(1,d)) > grt:
+        grt = div(1,d)
+        dmax = d
+print dmax
+print grt
+
+print "time " + str(time.clock()-startTime)
+    
+'''
+16
+983
+982
+time 2.3380632271
+'''
+

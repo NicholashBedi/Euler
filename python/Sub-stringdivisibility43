@@ -1,0 +1,54 @@
+##Nicholash Bedi
+##Sub-strigDivisibility
+import itertools
+import math
+import time
+startTime = time.clock()
+
+
+def to_list(a):
+    sp = []
+    for app in range(0,len(str(a))):
+        sp.append(int(str(a)[app]))
+    return sp
+
+def to_num(a):
+    z= 0
+    for b in range(0,len(a)):
+        z += int(a[b])*(10**(len(a)-b-1))
+    return z
+
+    
+def check(l):
+    if l[3]%2 != 0:
+        return False
+    elif to_num(l[2:5])%3 != 0:
+        return False
+    elif l[5]%5 != 0:
+        return False
+    elif to_num(l[4:7])%7 != 0:
+        return False
+    elif to_num(l[5:8])%11 != 0:
+        return False
+    elif to_num(l[6:9])%13 != 0:
+        return False
+    elif to_num(l[7:10])%17 != 0:
+        return False
+    else:
+        return True
+
+l = list(itertools.permutations([0,1,2,3,4,5,6,7,8,9]))
+k = []
+for a in range(0,len(l)):
+    if check(l[a]) == True:
+        k.append(to_num(l[a]))    
+print sum(k)
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+16695334890
+time taken 27.8034454681 seconds
+'''
+
+        

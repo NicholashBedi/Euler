@@ -1,0 +1,48 @@
+#Nicholash Bedi
+#Double-base Palindromes 36
+import math
+import time
+startTime = time.clock()
+
+def pal(a):
+    flag = 0
+    while flag == 0:
+        for x in range(0,((len(str(a))/2)+1)):
+            if str(a)[x] != str(a)[-x-1]:
+                return False
+        return True
+def lpal(a):
+    flag = 0
+    while flag == 0:
+        for x in range(0,((len(a)/2)+1)):
+            if a[x] != a[-x-1]:
+                return False
+        return True
+
+def dectobin(a):
+    lb = []
+    n = 0
+    while a > (2**n):
+        n+=1
+    n -= 1
+    for e in range(n,-1,-1):
+        if a - 2**e >= 0:
+            lb.append(1)
+            a -= 2**e
+        else:
+            lb.append(0)
+    return lb
+ln = []
+for a in range(10,999999):
+    if pal(a) == True:
+        if lpal(dectobin(a)) == True:
+            ln.append(a)
+            #print ln
+print sum(ln)        
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+872162
+time taken 1.42586454115 seconds
+'''

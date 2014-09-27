@@ -1,0 +1,75 @@
+#Nicholash Bedi
+#Truncatable Primes 37
+import math
+import time
+startTime = time.clock()
+
+def prime(prime):
+    if prime == 1:
+        return False
+    if prime == 2:
+        return True
+    if prime%2 == 0:
+        return False
+    for check in range(3,int(math.sqrt(prime))+1,2):
+        if prime%check == 0:
+            return False
+    return True
+
+def reverse(sp):
+    reverse = 0
+    for rev in range(0,len(sp)):
+        reverse += sp[-rev-1]*(10**rev)
+    return reverse
+
+def to_list(a):
+    sp = []
+    for app in range(0,len(str(a))):
+        sp.append(int(str(a)[app]))
+    return sp
+    
+
+def trunc_prime(p):
+    if prime(p) == False:
+        return False
+    sp = to_list(p)
+    length = len(sp)
+    l = sp
+    for trunc in range(0,len(sp)-1):
+        l.pop(trunc)
+        l.insert(0,0)
+        if prime(reverse(l)) == False:
+            return False
+    r = to_list(p)
+    while len(r) > 1:
+        r.pop()
+        if prime(reverse(r)) == False:
+            return False
+    return True
+
+l = []
+p = 11
+while len(l) < 11:
+    if trunc_prime(p) == True:
+        l.append(p)
+        print p
+    p += 2
+
+print
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+'''
+23
+37
+53
+73
+313
+317
+373
+797
+3137
+3797
+739397
+
+time taken 17.410023173 seconds
+'''

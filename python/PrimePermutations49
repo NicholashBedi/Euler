@@ -1,0 +1,93 @@
+#Nicholash Bedi
+#Prime Permutations 49
+import itertools
+import math
+import time
+start_time = time.clock()
+
+def to_list(a):
+    sp = []
+    for app in range(0,len(str(a))):
+        sp.append(int(str(a)[app]))
+    return sp
+
+def combinations_with_replacement(iterable, r):
+    # combinations_with_replacement('ABC', 2) --> AA AB AC BB BC CC
+    pool = tuple(iterable)
+    n = len(pool)
+    if not n and r:
+        return
+    indices = [0] * r
+    yield tuple(pool[i] for i in indices)
+    while True:
+        for i in reversed(range(r)):
+            if indices[i] != n - 1:
+                break
+        else:
+            return
+        indices[i:] = [indices[i] + 1] * (r - i)
+        yield tuple(pool[i] for i in indices)
+
+def reverse(sp):
+    reverse = 0
+    for rev in range(0,len(sp)):
+        reverse += sp[-rev-1]*(10**rev)
+    return reverse
+
+def check_prime(prime):
+    if prime < 1.1:
+        return False
+    if prime != int(prime):
+        return False
+    if prime == 2:
+        return True
+    if prime%2 == 0:
+        return False
+    for divisor in range(3,int(math.sqrt(prime)+1),2):
+        if prime%divisor == 0:
+            return False
+    return True
+
+
+def check(l):
+    p = list(itertools.permutations(l))
+    q=[]
+    for x in range(0,len(p)):
+        q.append(reverse(p[x]))
+    r=[]
+    for y in range(0,len(q)):
+        if check_prime(q[y]) == True:
+            r.append(q[y])
+    comb = list(itertools.combinations(r,2))
+    ldiff = []
+    for a in range(0,len(comb)):
+        if int(math.fabs(comb[a][0]-comb[a][-1])) != 0:
+            ldiff.append(int(math.fabs(comb[a][0]-comb[a][-1])))
+        else:
+            ldiff.append("NA")
+    for b in range(0,len(ldiff)):
+        if ldiff.count(ldiff[b]) > 1:
+            if ldiff.count(ldiff[b]*2) >0:
+                return [comb[b][0],comb[b][1],comb[b][1]+ldiff[b]]
+    return False
+
+l = list(combinations_with_replacement([1,2,3,4,5,6,7,8,9],4))
+for x in range(0,len(l)):
+    if check(l[x]) != False:
+        print check(l[x])
+
+print "time taken in seconds is " +str(float(time.clock()-start_time))
+
+'''
+[1123, 1213, 1303]
+[1531, 3511, 5491]
+[1319, 1913, 2507]
+[4157, 5147, 6137]
+[1487, 4817, 8147]
+[2969, 6299, 9629] (296962999629)
+[7933, 9733, 11533]
+[4493, 4943, 5393]
+[8387, 8837, 9287]
+time taken in seconds is 0.279585531148
+[Finished in 1.0s]
+'''

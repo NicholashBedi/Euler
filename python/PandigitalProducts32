@@ -1,0 +1,43 @@
+#Nicholash Bedi
+#Pandigital Products 32
+import math
+import time
+startTime = time.clock()
+
+def ptos(a,b):
+    o = [1,2,3,4,5,6,7,8,9]
+    l = []
+    for c in range(0,len(str(a))):
+        l.append(int(str(a)[c]))
+    for d in range(0,len(str(b))):
+        l.append(int(str(b)[d]))
+    for e in range(0,len(str(a*b))):
+        l.append(int(str(a*b)[e]))
+    l = sorted(l)
+    if l == o:
+        return True
+    else:
+        return False
+
+la=[]
+lb=[]
+lc=[]
+for a in range(100,9999):
+    if len(str(a)) == 4:
+        c = 9
+    if len(str(a)) == 3:
+        c = 99
+    for b in range(1,c):
+        if ptos(a,b) == True:
+            if lc.count(a*b) < 1:
+                la.append(a)
+                lb.append(b)
+                lc.append(a*b)
+print sum(lc)
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+''''
+45228
+time taken 2.35846127412 seconds
+''''

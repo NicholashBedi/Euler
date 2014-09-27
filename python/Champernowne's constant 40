@@ -1,0 +1,27 @@
+#Nicholash Bedi
+#Problem 40 Champernowne's Constant
+import math
+import time
+startTime = time.clock()
+
+def to_list(a):
+    sp = []
+    for app in range(0,len(str(a))):
+        sp.append(int(str(a)[app]))
+    return sp
+
+l=[]
+num = 0
+while len(l) < 1000001:
+    l.extend(to_list(num))
+    num += 1
+print str(l[1]*l[10]*l[100]*l[1000]*l[10000]*l[100000]*l[1000000])
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"
+
+
+"""
+210
+time taken 0.926810697305 seconds
+[Finished in 1.1s]
+"""

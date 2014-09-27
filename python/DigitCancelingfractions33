@@ -1,0 +1,40 @@
+#Nicholash Bedi
+#Digit Canceling Fractions 33
+import math
+import time
+startTime = time.clock()
+
+def cfrac(n,d):
+    if n%10 == 0:
+        return False
+    if d%10 == 0:
+        return False
+    if float(n)/float(d) >= 1:
+        return False
+    ln=[]
+    ld=[]
+    for a in range(0,len(str(n))):
+        ln.append(int(str(n)[a]))
+    for b in range(0,len(str(d))):
+        ld.append(int(str(d)[b]))
+
+    for check in range(-1,0):
+        if ld.count(ln[check]) > 0:
+            ld.remove(ln[check])
+            ln.remove(ln[check])
+            if float(ln[0])/float(ld[0]) == float(n)/float(d):
+                print
+                print n
+                print d
+                print ln[0]
+                print ld[0]
+                return True
+            else:
+                return False
+
+for n in range(10,99):
+    for d in range(10,99):
+        cfrac(n,d)
+            
+
+print "time taken " + str(float(time.clock()-startTime)) + " seconds"

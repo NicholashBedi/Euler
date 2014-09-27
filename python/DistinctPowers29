@@ -1,0 +1,15 @@
+#Nicholash Bedi
+#Distinct Powers 29
+import math
+import time
+
+l =[]
+for a in range(2,101):
+    for b in range(2,101):
+        if l.count(a**b) < 1:
+            l.append(a**b)
+print len(l)
+'''
+9183
+[Finished in 1.0s]
+'''

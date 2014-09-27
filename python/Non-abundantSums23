@@ -1,0 +1,47 @@
+#Nicholash Bedi
+#Non-Abundant Sums 23
+import math
+import time
+s = time.clock()
+##Check if number (abun) is an abundant number
+def abun(abun):
+    asum = 1
+    c=[]
+    for check in range(2,int(math.sqrt(abun))+1):
+        if abun%check == 0:
+            asum += check + abun/check
+            c.append(check)
+            c.append((abun/check))
+    if int(math.sqrt(abun)) == math.sqrt(abun):
+        asum -= math.sqrt(abun)
+    if asum > abun:
+        return True
+    else:
+        return False
+#Make a list of abundant numbers under l
+def labun(l):
+    abunlist =[]
+    for a in range(1,l):
+        if abun(a) == True:
+            abunlist.append(a)
+    return abunlist
+##print labun(101)
+
+def getlist(l):
+    abuns = labun(l)
+    r = range(l)
+    for x in abuns:
+        for y in abuns:
+            if x + y >= l:
+                break
+            r[x+y] = 0
+    return r
+print sum(getlist(28123))
+f = time.clock()
+print "time took is " + str(float(f-s)) + " seconds"
+
+'''
+4179871
+time took is 2.5109916051 seconds
+[Finished in 2.7s]
+'''
